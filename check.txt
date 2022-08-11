@@ -1,0 +1,113 @@
+TrueType
+  Apple Computer, Inc. によって開発されたデジタルフォント技術
+  1989 年に開発され、1991 年にリリースされた
+  高度な機能は持たないが動作環境は豊富
+  今では当たり前となったスケーラブルなフォントを実現したファイル形式として急速に普及
+  Macintosh では TrueType フォントファイルは SFNT と呼ばれることもある
+SFNT: spline font or scalable font
+  もとは Macintosh の TrueType fonts のために作られ、
+  Apple Computer の QuickDraw で使われていた。
+  SFNT は柔軟で拡張性があり、既存のフォントレンダリングエンジンやテキストレイアウトの
+  実装に影響を与えない方法で、必要に応じて追加のテーブル構造を導入可能とする
+OpenType
+  マイクロソフトと Adobe によって共同開発されたフォント形式
+  Apple の TrueType フォント形式の拡張として開発された
+  OpenType 1.0 フォント規格は 1997 年に公開された
+
+# Font
+
+em: default 1000
+  em-size (internal units, em-units)
+  内部単位、ascent と descent の和でなければならない
+  もとは欧文組版で使われる長さの単位（em）で、和文組版では全角幅に相当
+  名称の由来は大文字のMで、Mの活字が縦横いっぱいの空間を占めることに由来
+  フォントサイズを 12pt にしたとき、1em = 12pt になり、
+  18pt にしたならば、1em = 18pt となる
+ascent: default 800
+  ベースラインからアセンダラインまでの距離
+descent: default 200
+  ベースラインからディセンダラインまでの距離
+  昔の金属活字ではアセンダラインとディセンダラインがフォントの上限・下限と一致していた
+  現在ではそうとは限らない
+os2_typoascent: default 800
+os2_typodescent（負）: default -200
+  組版時に使われるらしい
+  ascent, descent と揃える
+hhea_ascent: default 666
+os2_winascent: default 666
+  余白を含むグリフ全体の最大の高さ
+hhea_descent（負）: default 0
+os2_windescent default 0
+  余白を含むグリフ全体の下方向の最大距離
+hhea_linegap: default 90
+os2_typolinegap: default 90
+vhea_linegap: default 0
+  0 にするのがよさそう
+upos: default -100.0
+  underline position
+uwidth: default 50.0
+  underline width
+version: default '001.000'
+os2_vendor: default 'PfEd'
+  PfEd は PfaEdit (FontForge の旧名称)
+os2_weight: default 400
+  https://docs.microsoft.com/en-us/typography/opentype/spec/os2#usweightclass
+weight: default 'Book'
+os2_stylemap: default 0
+  fsSelection
+  https://docs.microsoft.com/en-us/typography/opentype/spec/os2#fsselection
+os2_panose: default (2, 0, 5, 3, 0, 0, 0, 0, 0, 0)
+  https://forum.high-logic.com/postedfiles/Panose.pdf
+  Windows はこの値を使い等幅かどうかを判定しているらしい
+  ↑の 3 の部分を 9 にすることで等幅フォントに指定できる
+  Nerd だと (2, 0, 5, 9, 0, 0, 0, 0, 0, 0)
+  https://docs.microsoft.com/en-us/typography/opentype/spec/os2#panose
+os2_strikeypos: default 258
+os2_strikeysize: default 49
+  取り消し線に関係するパラメータ
+  https://docs.microsoft.com/en-us/typography/opentype/spec/os2#ystrikeoutposition
+  https://docs.microsoft.com/en-us/typography/opentype/spec/os2#ystrikeoutsize
+os2_use_typo_metrics: default 1
+  0 にするのが良さそう
+  0 にしないと TypoAscent, TypoDescent が使われてしまうので 0 にするべき
+hasvmetrics: default 0
+  縦書きメトリクス？
+os2_subxoff: default 0
+os2_subxsize: default 650
+os2_subyoff: default 140
+os2_subysize: default 700
+os2_supxoff: default 0
+os2_supxsize: default 650
+os2_supyoff: default 480
+os2_supysize: default 700
+  上付き・下付き文字関係
+  https://docs.microsoft.com/en-us/typography/opentype/spec/os2#ysubscriptxsize
+copyright: default 'Copyright (c) 2022, Unknown'
+creationtime: default '2022/07/16 05:03:38'
+familyname: default 'Untitled1'
+fontname: default 'Untitled1'
+fullname: default 'Untitled1'
+sfntRevision: default 1.0 (float)
+  None にセットすることで fontforge に自動設定させられる
+sfnt_names:
+  default
+    (
+      ('English (US)', 'Copyright', 'Copyright (c) 2022, Unknown'),
+      ('English (US)', 'Family', 'Untitled1'),
+      ('English (US)', 'SubFamily', 'Regular'),
+      ('English (US)', 'UniqueID', 'FontForge 2.0 : Untitled1 : 16-7-2022'),
+      ('English (US)', 'Fullname', 'Untitled1'),
+      ('English (US)', 'Version', 'Version 001.000'),
+      ('English (US)', 'PostScriptName', 'Untitled1')
+    )
+
+# Glyph
+
+width
+  グリフの送り幅
+vwidth
+  グリフの垂直方向の送り幅
+left_side_bearing
+  左から右に書く文字で、印字開始基準位置の位置と、文字の左端との水平距離
+right_side_bearing
+  左から右に書く文字で、文字の右端と、次の文字の印字開始基準位置の水平距離
